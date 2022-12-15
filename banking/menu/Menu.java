@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
-
     private void showStartMenu() {
         System.out.println("""
                 1. Create an account
@@ -24,9 +23,6 @@ public class Menu {
     public void startMenu() {
         boolean isWorking = true;
         Scanner scanner = new Scanner(System.in);
-//        for (int i = 0; i < 9; i++) {
-//            createAccount();
-//        }
         while (isWorking) {
 
             showStartMenu();
@@ -50,12 +46,6 @@ public class Menu {
                     System.out.println("Your input number is incorrect. Input 1, 2 or 0\n");
             }
         }
-        //TODO: удалить перед проверкой
-//        for (Account acc:AccountDB.allAccounts) {
-//            if (Objects.nonNull(acc)) {
-//                System.out.println(acc);
-//            }
-//        }
     }
 
     private void createAccount(){
@@ -90,12 +80,10 @@ public class Menu {
     }
 
     private Account findAccount(String cardNumber, String pin) {
-
-        for (Account acc:AccountDB.allAccounts) {
-            if (Objects.nonNull(acc)) {
-                if (acc.getCardNumber().equals(cardNumber) && acc.getPin().equals(pin)) {
-                    return acc;
-                }
+        Account acc = AccountDB.getAccount(cardNumber);
+        if (Objects.nonNull(acc)) {
+            if (acc.getCardNumber().equals(cardNumber) && acc.getPin().equals(pin)) {
+                return acc;
             }
         }
         return null;
@@ -104,9 +92,6 @@ public class Menu {
     private boolean accountMenu(Account account) {
         boolean isWorking = true;
         Scanner scanner = new Scanner(System.in);
-//        for (int i = 0; i < 9; i++) {
-//            createAccount();
-//        }
         while (isWorking) {
 
             showAccountMenu();

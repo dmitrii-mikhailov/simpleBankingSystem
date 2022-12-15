@@ -10,7 +10,7 @@ public class Account {
     private final String pin;
     private final long balance;
 
-    private Account(String cardNumber, String pin, long balance) {
+    public Account(String cardNumber, String pin, long balance) {
         this.cardNumber = cardNumber;
         this.pin = pin;
         this.balance = balance;
@@ -44,9 +44,8 @@ public class Account {
         private long balance;
 
         private void generateCardNumber() {
-
             String tempCardNumber = generateRandomNumberCard();
-            //TODO: SOLVE INFINITE CYCLE IF MAXIMUM NUMBER OF CARDS REACHED
+
             if(AccountDB.getNumberOfObjInArr() < BOUND) {
                 while (Objects.nonNull(AccountDB.getAccount(tempCardNumber))) {
                     tempCardNumber = generateRandomNumberCard();
