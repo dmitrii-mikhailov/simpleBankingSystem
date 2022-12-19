@@ -8,7 +8,7 @@ import java.util.Random;
 public class Account {
     private final String cardNumber;
     private final String pin;
-    private final long balance;
+    private long balance;
 
     public Account(String cardNumber, String pin, long balance) {
         this.cardNumber = cardNumber;
